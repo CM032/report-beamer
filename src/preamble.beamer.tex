@@ -1,0 +1,146 @@
+\documentclass[
+	8pt,
+	aspectratio=1610,
+	professionalfonts,
+	leqno,
+	intlimits,
+	c
+]{beamer}
+
+\usetheme[
+	language=spanish,
+	decoration=main,
+	serifface=EB Garamond,
+	seriffaceoptions={Scale=1.1},
+	sansface=Montserrat,
+	monoface=JetBrains Mono,
+	semibold=false,
+	light=false,
+	mathface=pagella,
+	mathfaceoptions={Scale=1.05},
+	allserif
+]{Celestia}
+% \usetheme[light]{Mirage}
+
+% \useinnertheme[rounded,shadow]{tcolorbox}
+% \usefonttheme[onlymath]{serif}
+% \setbeamertemplate{itemize items}[circle]
+% \setbeamersize{text margin left=10pt,text margin right=10pt}
+
+% \tcbsetforeverylayer{
+% 	hbox,
+% 	% borderline={1pt}{0pt}{black,dashed}
+% }
+
+% \tcbset{
+% 	attach boxed title to top center={yshift=-2mm},
+% 	enhanced,
+% 	bottom=1mm
+% }
+
+\input{preamble.common}
+
+\makeatletter
+\newenvironment<>{proofs}[1][\proofname]{%
+	\par
+	\def\insertproofname{#1\@addpunct{.}}%
+	\usebeamertemplate{proof begin}#2}
+{\usebeamertemplate{proof end}}
+\makeatother
+
+\setbeamertemplate{bibliography item}{%
+	\ifboolexpr{ test {\ifentrytype{book}} or test {\ifentrytype{mvbook}}
+		or test {\ifentrytype{collection}} or test {\ifentrytype{mvcollection}}
+		or test {\ifentrytype{reference}} or test {\ifentrytype{mvreference}} }
+	{\setbeamertemplate{bibliography item}[book]}
+	{\ifentrytype{online}
+		{\setbeamertemplate{bibliography item}[online]}
+		{\setbeamertemplate{bibliography item}[article]}}%
+	\usebeamertemplate{bibliography item}}
+
+\defbibenvironment{bibliography}
+{\list{}
+	{\settowidth{\labelwidth}{\usebeamertemplate{bibliography item}}%
+		\setlength{\leftmargin}{\labelwidth}%
+		\setlength{\labelsep}{\biblabelsep}%
+		\addtolength{\leftmargin}{\labelsep}%
+		\setlength{\itemsep}{\bibitemsep}%
+		\setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\item}
+
+\usepackage[
+	audience=english,
+	% audience=spanish,
+]{beameraudience}
+\usepackage{multiaudience}
+
+\SetNewAudience{advisor}
+\SetNewAudience{students}
+\DefCurrentAudience{advisor} % students
+
+% \tcbset{
+%   enhanced, remember,
+%   frame hidden, interior hidden,
+%   underlay={
+%       \begin{tcbclipframe}
+%         \begin{scope}[inner sep=0pt,
+%             remember picture,overlay]
+%           \fill[white] (current page.south west)
+%           rectangle (current page.north east);
+%           % blurred version of background image
+%           \node[opacity=0.9] at (current page.center)
+%           {\includegraphics[width=\paperwidth]
+%             {goldshade}};
+%         \end{scope}
+%       \end{tcbclipframe}
+%     }}
+
+% \tcbset{
+%   enhanced,
+%   frame style image={blueshade},
+%   opacityback=0,
+%   opacitybacktitle=0
+% }
+
+% \tcbset{
+%   title style={
+%       left color=beamer@tcb@titlebg,
+%       right color=beamer@tcb@bodybg
+%     }
+% }
+
+% TODO: not working
+% \tcbset{
+%   enhanced, boxrule=1pt,
+%   borderline={1.5pt}{0pt}{beamer@tcb@titlebg},
+%   attach boxed title to top left={xshift=0cm,
+%       yshift*=0mm-\tcboxedtitleheight},
+%   varwidth boxed title*=-3cm,
+%   boxed title style={frame code={
+%           \path[fill=beamer@tcb@titlebg]
+%           (frame.north west) [sharp corners] --
+%           (frame.north east) [rounded corners=2mm] --
+%           (frame.south east) [sharp corners] --
+%           (frame.south west) [rounded corners=2mm] --
+%           cycle;},interior engine=empty,no shadow},
+%   arc is curved, arc = 1.5mm,
+% }
+
+% \tcbsetforeverylayer{
+%   enhanced,
+%   attach boxed title to top center=
+%     {yshift=-1mm},
+%   boxed title style={no shadow},
+% }
+
+% \tcbsetforeverylayer{
+%   borderline={1pt}{0pt}{
+%       black,dashed}
+% }
+
+\AtBeginSection[]{
+	\begin{frame}
+		\usebeamertemplate{section page}
+	\end{frame}
+}

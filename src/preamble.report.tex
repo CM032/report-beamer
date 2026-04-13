@@ -1,0 +1,32 @@
+\documentclass[
+	fontsize=11pt,
+	pagesize,
+	paper=landscape,
+	a4,
+	DIV=calc,
+	headsepline,
+	footsepline,
+	abstract=true,
+	bibliography=totoc,
+	sfdefaults=false,
+	nosumlimits,
+	intlimits
+]{scrreprt}
+\usepackage[margin=.5cm]{geometry}
+\usepackage{background}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\input{preamble.common}
+
+\backgroundsetup{
+	scale=1,
+	angle=0,
+	opacity=.1,
+	contents={
+			\begin{tikzpicture}[remember picture,overlay]
+				\node at ([yshift=11pt,xshift=5pt]current page.center) {\includegraphics[width=8.5cm]{images/logounicolor}};
+			\end{tikzpicture}
+		}
+}
+
+\usepackage[envcountsect]{beamerarticle} % notheorems
