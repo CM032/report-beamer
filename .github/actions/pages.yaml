@@ -1,0 +1,32 @@
+name: MOLE docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - src/**
+
+jobs:
+  docs:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v20
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: latex.yml
+          name: PDF-artifact
+
+      - name: "Untar files"
+        run: |
+          tar -I zstd -xvf PDF.tar.zst
+          mv public/*.pdf docs
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs
+          force_orphan: true
+          publish_branch: gh-pages
