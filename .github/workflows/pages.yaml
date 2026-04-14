@@ -15,7 +15,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v20
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: main.yml
+          workflow: main.yaml
           name: PDF-artifact
 
       - name: "Untar files"
