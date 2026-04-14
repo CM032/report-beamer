@@ -32,7 +32,7 @@ jobs:
           shell: bash
           run: |
             sudo chown -R gitpod:gitpod /work
-            pushd /work/homework
+            pushd /work/src
             arara main.beamer main.report
             popd
             mkdir -p /work/public
