@@ -36,8 +36,9 @@ jobs:
             arara main.beamer main.report
             popd
             mkdir -p /work/public
-            mv /work/project/main.beamer.pdf /work/public
-            mv /work/project/main.report.pdf /work/public
+            mv /work/src/main.*.pdf /work/public
+            # mv /work/src/main.beamer.pdf /work/public
+            # mv /work/src/main.report.pdf /work/public
 
       - name: "Tar files"
         run: |
