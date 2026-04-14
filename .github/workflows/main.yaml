@@ -37,8 +37,6 @@ jobs:
             popd
             mkdir -p /work/public
             mv /work/src/main.*.pdf /work/public
-            # mv /work/src/main.beamer.pdf /work/public
-            # mv /work/src/main.report.pdf /work/public
 
       - name: "Tar files"
         run: |
