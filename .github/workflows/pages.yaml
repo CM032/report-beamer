@@ -21,12 +21,11 @@ jobs:
       - name: "Untar files"
         run: |
           tar -I zstd -xvf PDF.tar.zst
-          mv public/*.pdf docs
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs
+          publish_dir: public
           force_orphan: true
           publish_branch: gh-pages
